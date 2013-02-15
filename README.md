@@ -6,7 +6,7 @@ A simple (but ugly) plugin that sends Audit events via email.
 # Installation:
 
 Add to Gemfile as:
-  gem 'audited_notifactions' :git => 'https://github.com/frimik/foreman_audited_notifications.git'
+  gem 'audited_notifications' :git => 'https://github.com/frimik/foreman_audited_notifications.git'
 
 # Copyright
 
