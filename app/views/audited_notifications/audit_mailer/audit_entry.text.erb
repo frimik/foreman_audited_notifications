@@ -1,0 +1,8 @@
+
+<%= @audit %>
+
+<% if !@audit_details.nil? %>
+  <% @audit_details.each do |item| %>
+    * <%= item %>
+  <% end %>
+<% end %>
