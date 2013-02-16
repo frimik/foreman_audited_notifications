@@ -20,10 +20,8 @@ loop do
   message = parts.join('|').strip
   next if not message or message.empty?
   if password == 'rbot'
-    puts "Sending #{message} to #{channel}"
     rbot = DRbObject.new_with_uri(rbot_url)
     id = rbot.delegate(nil, "remote login #{botuser} #{botpassword}")[:return]
-    puts "id is: #{id}"
     rbot.delegate(id, "dispatch say #{channel} #{message}")
   end
 end
