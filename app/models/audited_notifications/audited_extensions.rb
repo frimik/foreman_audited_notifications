@@ -15,10 +15,10 @@ module AuditedNotifications
         audit_subject = "#{self.username} #{audit_remote_address self} #{audit_action_name self} #{audited_type self} #{audit_title self}"
         audit_details = details(self)
 
-        if SETTINGS[:audit_by_email] == true
+        if SETTINGS[:audit_by_email][:enabled]
           AuditedNotifications::AuditMailer.audit_entry(audit_subject, audit_details).deliver
         end
-        if SETTINGS[:audit_by_irc] == true
+        if SETTINGS[:audit_by_irc][:enabled]
           rbotnotify(audit_subject)
         end
 

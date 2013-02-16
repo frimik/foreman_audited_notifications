@@ -16,14 +16,14 @@ Add to Gemfile as:
 Add to your Foreman `config/settings.yaml`:
 
 ```yaml
-:audit_by_irc: true
 :audit_by_irc:
+  :enabled: true
   :address: rbot-server.example.com
   :port: 7272
   :channel: "#theforeman"
   :password: rbot
-:audit_by_email: true
 :audit_by_email:
+  :enabled: true
   :recipients:
     - bossman@example.com
 ```
