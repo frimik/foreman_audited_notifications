@@ -31,7 +31,7 @@ module AuditedNotifications
           audit.audited_changes.map do |name, change|
             next if change.nil? or change.to_s.empty?
             if name == 'template'
-              "Provisioning Template content changed #{link_to 'view diff', audit_path(audit)}".html_safe if audit_template? audit
+              "Provisioning Template content changed. (Sorry, diff not supported.)" if audit_template? audit
             elsif name == "owner_id" || name == "owner_type"
               "Owner changed to #{audit.revision.owner rescue 'N/A'}"
             else
