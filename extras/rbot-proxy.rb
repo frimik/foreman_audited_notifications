@@ -22,7 +22,11 @@ loop do
   if password == 'rbot'
     rbot = DRbObject.new_with_uri(rbot_url)
     id = rbot.delegate(nil, "remote login #{botuser} #{botpassword}")[:return]
-    rbot.delegate(id, "dispatch say #{channel} #{message}")
+    lines = message.split("\n")
+    lines.each do |l|
+      l.strip!
+      rbot.delegate(id, "dispatch say #{channel} #{l}")
+    end
   end
 end
 

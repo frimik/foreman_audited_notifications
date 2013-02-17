@@ -19,20 +19,20 @@ module AuditedNotifications
           AuditedNotifications::AuditMailer.audit_entry(audit_subject, audit_details).deliver
         end
         if SETTINGS[:audit_by_irc][:enabled]
-          rbotnotify(audit_subject)
+          rbotnotify(audit_subject, audit_details)
         end
 
         nil
       end
 
-      def rbotnotify(subject)
+      def rbotnotify(subject, details = [])
         password = SETTINGS[:audit_by_irc][:password] || "rbot"
         channel = SETTINGS[:audit_by_irc][:channel] || "#prod"
         address = SETTINGS[:audit_by_irc][:address] || "rbot"
         port = SETTINGS[:audit_by_irc][:port] || 7272
-        message = "Foreman Audit: #{subject}"
+        message = "Foreman Audit: #{subject}\n" + details.join("\n")
         s = UDPSocket.new()
-        logger.info("rbotnotify: sending #{message} to #{channel}")
+        logger.info("rbotnotify: sending #{subject} to #{channel}")
         bytes_sent = s.send("#{password}|#{channel}|#{message}", 0, address, port)
         logger.info("rbotnotify: #{bytes_sent} bytes sent")
         nil
