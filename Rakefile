@@ -16,8 +16,8 @@ Jeweler::Tasks.new do |gem|
   gem.name = "audited_notifications"
   gem.homepage = "http://github.com/frimik/audited_notifications"
   gem.license = "GPL-3"
-  gem.summary = %Q{Plugin engine for Foreman }
-  gem.description = %Q{Plugin engine for Foreman }
+  gem.summary = %Q{Audit notification plugin engine for Foreman}
+  gem.description = %Q{Does Email and IRC notifications of all Audit events from TheForeman}
   gem.email = "frimik@gmail.com"
   gem.authors = ["Mikael Fridh"]
   # dependencies defined in Gemfile

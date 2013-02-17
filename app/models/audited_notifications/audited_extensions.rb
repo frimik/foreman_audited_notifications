@@ -12,11 +12,29 @@ module AuditedNotifications
 
       private
       def audit_notify
-        audit_subject = "Audit: #{self.username} #{audit_remote_address self} #{audit_action_name self} #{audited_type self} #{audit_title self}"
+        audit_subject = "#{self.username} #{audit_remote_address self} #{audit_action_name self} #{audited_type self} #{audit_title self}"
         audit_details = details(self)
 
-        AuditedNotifications::AuditMailer.audit_entry(audit_subject, audit_details).deliver
+        if SETTINGS[:audit_by_email][:enabled]
+          AuditedNotifications::AuditMailer.audit_entry(audit_subject, audit_details).deliver
+        end
+        if SETTINGS[:audit_by_irc][:enabled]
+          rbotnotify(audit_subject, audit_details)
+        end
 
+        nil
+      end
+
+      def rbotnotify(subject, details = [])
+        password = SETTINGS[:audit_by_irc][:password] || "rbot"
+        channel = SETTINGS[:audit_by_irc][:channel] || "#prod"
+        address = SETTINGS[:audit_by_irc][:address] || "rbot"
+        port = SETTINGS[:audit_by_irc][:port] || 7272
+        message = "Foreman Audit: #{subject}\n" + details.join("\n")
+        s = UDPSocket.new()
+        logger.info("rbotnotify: sending #{subject} to #{channel}")
+        bytes_sent = s.send("#{password}|#{channel}|#{message}", 0, address, port)
+        logger.info("rbotnotify: #{bytes_sent} bytes sent")
         nil
       end
 

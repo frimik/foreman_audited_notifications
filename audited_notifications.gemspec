@@ -5,12 +5,12 @@
 
 Gem::Specification.new do |s|
   s.name = "audited_notifications"
-  s.version = "0.0.3"
+  s.version = "0.0.4"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Mikael Fridh"]
   s.date = "2013-02-16"
-  s.description = "Plugin engine for Foreman "
+  s.description = "Does Email and IRC notifications of all Audit events from TheForeman"
   s.email = "frimik@gmail.com"
   s.extra_rdoc_files = [
     "LICENSE",
@@ -27,6 +27,7 @@ Gem::Specification.new do |s|
     "app/views/audited_notifications/audit_mailer/audit_entry.html.erb",
     "app/views/audited_notifications/audit_mailer/audit_entry.text.erb",
     "audited_notifications.gemspec",
+    "extras/rbot-proxy.rb",
     "lib/audited_notifications.rb",
     "lib/audited_notifications/engine.rb"
   ]
@@ -34,7 +35,7 @@ Gem::Specification.new do |s|
   s.licenses = ["GPL-3"]
   s.require_paths = ["lib"]
   s.rubygems_version = "1.8.24"
-  s.summary = "Plugin engine for Foreman"
+  s.summary = "Audit notification plugin engine for Foreman"
 
   if s.respond_to? :specification_version then
     s.specification_version = 3

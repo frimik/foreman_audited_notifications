@@ -1,16 +1,39 @@
 Foreman Audited Notifications
 =============================
 
-A simple (but ugly) plugin that sends Audit events via email.
+A simple (but ugly) plugin that sends Audit events via email and lately also
+to IRC via [Rbot](http://ruby-rbot.org/).
 
 # Installation:
 
 Add to Gemfile as:
-  gem 'audited_notifications' :git => 'https://github.com/frimik/foreman_audited_notifications.git'
+
+    gem 'audited_notifications', :git => 'https://github.com/frimik/foreman_audited_notifications.git', :branch => 'irc'
+
+# Usage:
+
+
+Add to your Foreman `config/settings.yaml`:
+
+```yaml
+:audit_by_irc:
+  :enabled: true
+  :address: rbot-server.example.com
+  :port: 7272
+  :channel: "#theforeman"
+  :password: rbot
+:audit_by_email:
+  :enabled: true
+  :recipients:
+    - bossman@example.com
+```
+
+The IRC notifications require a special UDP listener program that sits between
+your rbot and TheForeman. See `extras/rbot-proxy.rb`
 
 # Copyright
 
-Copyright (c) 2012-2013 Mikael Fridh
+Copyright (c) 2012-2013 Mikael Fridh except where otherwise noted.
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by

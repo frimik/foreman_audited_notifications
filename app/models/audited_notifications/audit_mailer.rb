@@ -4,7 +4,7 @@ module AuditedNotifications
     def audit_entry(audit_subject, audit_details)
       @audit = audit_subject
       @audit_details = audit_details
-      email = Setting[:administrator]
+      email = SETTINGS[:audit_by_email][:recipients] || Setting[:administrator]
       raise "unable to find recipients" if email.empty?
       recipients = email
       sender_address = Setting["email_reply_address"]
