@@ -8,7 +8,7 @@ to IRC via [Rbot](http://ruby-rbot.org/).
 
 Add to Gemfile as:
 
-    gem 'audited_notifications', :git => 'https://github.com/frimik/foreman_audited_notifications.git', :branch => 'irc'
+    gem 'audited_notifications', :git => 'https://github.com/frimik/foreman_audited_notifications.git'
 
 # Usage:
 
