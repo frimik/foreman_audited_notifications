@@ -28,6 +28,20 @@ Add to your Foreman `config/settings.yaml`:
     - bossman@example.com
 ```
 
+# Example output:
+
+This is a newly created host that took 7 minutes to build sent to some IRC
+channel:
+
+```
+19:11 < rbot> Foreman Audit: Weird Al (10.0.2.123) created Host centos6-1.mg8.example.com
+19:18 < rbot> Foreman Audit: Admin User (10.50.0.183) updated Host centos6-1.mg8.example.com
+19:18 < rbot> Build changed from true to false
+19:18 < rbot> Installed at changed from N/A to 2013-03-27 18:18:07 UTC
+19:18 < rbot> Foreman Audit: Admin User (10.0.10.10) updated Host centos6-1.mg8.example.com
+19:18 < rbot> Certname changed from N/A to centos6-1.mg8.example.com
+```
+
 The IRC notifications require a special UDP listener program that sits between
 your rbot and TheForeman. See `extras/rbot-proxy.rb`
 
