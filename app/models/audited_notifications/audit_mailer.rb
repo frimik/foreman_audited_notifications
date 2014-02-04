@@ -8,7 +8,7 @@ module AuditedNotifications
       raise "unable to find recipients" if email.empty?
       recipients = email
       sender_address = Setting["email_reply_address"]
-      subject "[Foreman Audit] #{audit_subject}"
+      subject = "[Foreman Audit] #{audit_subject}"
       mail(:to => recipients,
            :from => sender_address,
            :subject => subject) do |format|
